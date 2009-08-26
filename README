@@ -3,13 +3,16 @@ configurations for OS X.
 
 sharedwebconfig.py is a command-line executable python program.
 
-Its purpose is to update an Apache config file if it has changed 
+Its purpose is to update an Apache conf file if it has changed 
 on a central server somewhere. Before checking other files, it 
 will try to update itself. All file locations and URLs can be 
 configured by modifying the first few lines of the program.
 
 Depending on the files to be updated, it may need to run as root:
 	sudo sharedwebconfig.py
+
+Before running, be sure to alter "config.py" to use the right
+paths for your particular setup.
 
 
 FUTURE TASKS AND GOALS:

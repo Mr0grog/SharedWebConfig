@@ -1,13 +1,4 @@
 #!/usr/bin/env python
-
-# CONFIGURATION #
-working_files      = '/Users/[your username]/Documents/WebWork' # Path to all your directories that will serve as virtual hosts
-apache_config_file = '/private/etc/apache2/other/shared_config.conf' # Apache config file to change
-apache_config_url  = 'http://localhost:9000/test/testapache.conf' # URL for updated Apache config files
-self_update_url    = 'http://localhost:9000/test/testremoteupdate.py' # Selfupdate URL
-
-
-# PROGRAM #
 # 
 # SharedWebConfig 1.0
 # Copyright (c) 2009 Rob Brackett (http://robbrackett.com/)
@@ -132,17 +123,20 @@ def run_again():
 	exit(0)
 
 
-# Update self
-update_file(__file__,
-            self_update_url,
-            callback=run_again)
 
-# TODO: Test file apache config file to make sure it exists
+if __name__ == "__main__":
+	import config
+	
+	# Update self
+	update_file(__file__,
+	            config.self_update_url,
+	            callback=run_again)
 
-# Update apache config file
-update_file(apache_config_file, 
-            apache_config_url, 
-            {'working_files':working_files}, 
-            restart_apache)
+	# TODO: Test file apache config file to make sure it exists
 
+	# Update apache config file
+	update_file(config.apache_config_file, 
+	            config.apache_config_url, 
+	            {'working_files':config.working_files}, 
+	            restart_apache)
 
